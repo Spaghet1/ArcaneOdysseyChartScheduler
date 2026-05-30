@@ -46,3 +46,15 @@ public:
 	Height height;
 	Terrain terrain;
 };
+
+struct ChartComparator {
+	PointVector currPos;
+	bool operator()(const ChartSpot& a, const ChartSpot& b) {
+		double dist_a = length(a.location - currPos);
+		double dist_b = length(b.location - currPos);
+		if (dist_a == dist_b) return a.rarity < b.rarity;
+		else return dist_a < dist_b;
+	}
+};
+
+
