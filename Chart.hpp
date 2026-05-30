@@ -1,3 +1,5 @@
+#include "PointVector.hpp"
+
 enum CompassDirection {
 	N,
 	NNW,
@@ -45,6 +47,9 @@ public:
 	CompassDirection dir;
 	Height height;
 	Terrain terrain;
+
+	// testing constructor
+	ChartSpot(Rarity rarity, PointVector location) : rarity(rarity), location(location), dir(N), height(SEA_LEVEL), terrain(GROUND) {};
 };
 
 struct ChartComparator {
@@ -56,5 +61,3 @@ struct ChartComparator {
 		else return dist_a < dist_b;
 	}
 };
-
-

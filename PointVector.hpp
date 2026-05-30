@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cmath>
 
 class PointVector {
@@ -8,7 +9,7 @@ public:
 	PointVector(double x, double y) : x(x), y(y);
 
 	double length() const {
-		return hypot(this->x, this->y);
+		return std::hypot(this->x, this->y);
 	}
 	
 	PointVector operator+(const PointVector& other) const {
@@ -20,7 +21,13 @@ public:
 	PointVector operator*(const double scalar) const {
 		return PointVector(this->x * scalar, this->y * scalar);
 	}
-	friend PointVector operator*(const double scalar, const PointVector& pv) const {
-		return PointVector(pv.x * scalar, pv.y * scalar);
-	}
 };
+
+PointVector operator*(const double scalar, const PointVector& pv) {
+	return PointVector(pv.x * scalar, pv.y * scalar);
+}
+
+std::ostream& operator<<(std::ostream& os, const PointVector& pv) {
+	os << '(' << pv.x << ',' << pv.y << ')';
+	return os;
+}
