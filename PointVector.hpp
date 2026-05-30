@@ -6,7 +6,7 @@ public:
 	double x;
 	double y;
 
-	PointVector(double x, double y) : x(x), y(y);
+	PointVector(double x, double y) : x(x), y(y) {};
 
 	double length() const {
 		return std::hypot(this->x, this->y);

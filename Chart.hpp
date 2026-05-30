@@ -55,8 +55,8 @@ public:
 struct ChartComparator {
 	PointVector currPos;
 	bool operator()(const ChartSpot& a, const ChartSpot& b) {
-		double dist_a = length(a.location - currPos);
-		double dist_b = length(b.location - currPos);
+		double dist_a = (a.location - currPos).length();
+		double dist_b = (b.location - currPos).length();
 		if (dist_a == dist_b) return a.rarity < b.rarity;
 		else return dist_a < dist_b;
 	}
